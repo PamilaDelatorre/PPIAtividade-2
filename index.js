@@ -17,7 +17,7 @@ const evento2 = new Evento(2, "Expo Prudente Teste", "O maior Rodeio do Oeste Pa
 adicionarEvento(evento2);
 
 //listando todos os eventos criados
-evento2.consultar().then((listaEventos) => {
+evento1.consultar().then((listaEventos) => {
     for (let evento of listaEventos){
         console.log(evento.toString());
     }
@@ -26,11 +26,19 @@ evento2.consultar().then((listaEventos) => {
 });
 
 //excluindo evento 1
-evento1.excluir();
+evento1.excluir().then(() => {
+    console.log("Evento excluido com sucesso.");
+}).catch((erro) => {
+    console.log("Erro ao excluir o evento: " + erro);
+});
 
 //alterando nome do evento 2
 evento2.nome = "Expo Prudente";
-evento2.alterar();
+evento2.alterar().then(() => {
+    console.log("Evento alterado com sucesso.");
+}).catch((erro) => {
+    console.log("Erro ao alterar o evento: " + erro);
+});
 
 //consultando evento 2
 evento2.consultar("Expo Prudente").then((listaEventos) => {
