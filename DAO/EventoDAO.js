@@ -64,7 +64,6 @@ export default class EventoDAO{
                              avaliacao = ? 
                          WHERE codigo = ?;`;
             const parametros = [
-                evento.codigo,
                 evento.nome,
                 evento.descricao,
                 evento.dataInicio,
@@ -72,7 +71,8 @@ export default class EventoDAO{
                 evento.valorPista,
                 evento.valorVip,
                 evento.valorCamarote,
-                evento.avaliacao
+                evento.avaliacao,
+                evento.codigo
             ];
             await conexao.execute(sql,parametros);
             await global.poolConexoes.releaseConnection(conexao);
@@ -103,7 +103,7 @@ export default class EventoDAO{
         }
 
         const conexao = await conectar();
-        const [registros] = await conexao.execute(sql,parametros);
+        const [registros] = await conexao.execute(sql, parametros);
         let listaEventos = [];
         for (const registro of registros){
             const evento = new Evento(
