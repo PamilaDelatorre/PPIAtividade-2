@@ -121,6 +121,5 @@ export default class EventoDAO{
         }
         await global.poolConexoes.releaseConnection(conexao);
         return listaEventos;
-
     }
 }

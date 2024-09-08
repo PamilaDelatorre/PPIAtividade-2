@@ -1,4 +1,4 @@
-import Evento from "./Modelo/Evento.js" //nunca se esqueça da extensão .js
+import Evento from "./Modelo/Evento.js" 
 
 function adicionarEvento(evento) {
     evento.incluir().then(() =>{
@@ -34,7 +34,7 @@ evento2.alterar();
 
 //consultando evento 2
 evento2.consultar("Expo Prudente").then((listaEventos) => {
-    for (const evento of listaEventos){
+    for (let evento of listaEventos){
         console.log(evento.toString());
     }
 }).catch((erro) =>{
